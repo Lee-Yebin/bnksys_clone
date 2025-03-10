@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <meta property="og:title" content="BNK시스템">
+    <meta property="og:description" content="디지털 금융을 선도하는 IT서비스의 리더 - BNK시스템">
+    <meta property="og:image" content="/images/common/logo.png">
+    <meta property="og:url" content="https://www.bnksys.co.kr/">
+    <meta name="subject" content="BNK시스템">
+    <meta name="keywords"
+        content="BNK시스템, BNK금융지주 IT자회사, IT서비스 전문업체, IT솔루션, 시스템통합, 통합구매, 유지보수, 스마트금융 서비스 안내, 우리 사주 관리 시스템">
+    <meta name="description"
+        content="디지털 금융을 선도하는 IT서비스의 리더 - BNK시스템, BNK금융지주 IT자회사, IT서비스 전문업체, IT솔루션, 시스템통합, 통합구매, 유지보수, 스마트금융 서비스 안내">
+    <title>BNK시스템-클론코딩</title>
+
+    <!-- 시작 css -->
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/bnk_ui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./css/common.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./css/main.css" media="all">
+    <!-- 끝 css -->
+
+    <!-- 시작 라이브러리 -->
+    <script type="text/javascript" src="../jquery/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="../jquery/juqery_ui.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../swiper/swiper.min.css" media="all">
+    <script type="text/javascript" src="../swiper/swiper.js"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- 끝 라이브러리 -->
+
+    <!-- 시작 js -->
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+    <!-- 끝 js -->
+</head>
+
+<body>
+    <script>
+        $(function () {
+            // html - 인클루드
+            $("#header").load("../include/header.html");
+            $("#footer").load("../include/footer.html");
+
+            // 시작 애니메이션
+            AOS.init();
+            // 끝 애니메이션
+
+            // 시작 main1 top_slide
+            $(".main1 .top_slide").each(function (index) {
+                let $this = $(this);
+                let swiper = undefined;
+
+                // 슬라이드 초기화
+                if (swiper != undefined) {
+                    swiper = undefined;
+                }
+
+                // 슬라이드 인덱스 클래스 추가
+                let classNum = $(this).index() + 1;
+                $this.find(".swiper").addClass("slider" + classNum);
+
+                // 슬라이드 옵션
+                swiper = new Swiper(".main1 .top_slide .slider" + classNum, {
+                    autoplay: true,
+                    speed: 400,
+                    slidesPerView: 1,
+                    dots: true,
+                    loop: false,
+                    navigation: {
+                        nextEl: ".main1 .top_slide .slider" + classNum + " .control_btn .next",
+                        prevEl: ".main1 .top_slide .slider" + classNum + " .control_btn .prev",
+                    },
+                    pagination: {
+                        el: ".main1 .top_slide .slider" + classNum + " .control_btn .paging",
+                        clickable: true,
+                    },
+                    a11y: {
+                        paginationBulletMessage: '{{index}}번째 슬라이드로 이동',
+                    },
+                });
+                // 재생/멈춤 버튼
+                // 재생 버튼
+                $(".main1 .top_slide .control_btn .play").click(function () {
+                    swiper.autoplay.start();
+                    $(this).hide();
+                    $(".main1 .top_slide .control_btn .pause").show();
+                });
+
+                // 멈춤 버튼
+                $(".main1 .top_slide .control_btn .pause").click(function () {
+                    swiper.autoplay.stop();
+                    $(this).hide();
+                    $(".main1 .top_slide .control_btn .play").show();
+                });
+
+                // 슬라이드에 포커스가 되면 자동 재생 멈추기
+                $(".main1 .top_slide .swiper-slide a, .main1 .top_slide .swiper-slide button").on("focus", function () {
+                    swiper.autoplay.stop();
+
+                });
+                // 슬라이드에서 포커스가 해제되면 자동 재생 시작
+                $(".main1 .top_slide .swiper-slide a, .main1 .top_slide .swiper-slide button").on("blur", function () {
+                    swiper.autoplay.start();
+                });
+            });
+            // 끝 main1 top_slide
+
+            // 시작 main3 drag_slide
+            $(".main3 .drag_slide").each(function (index) {
+                let $this = $(this);
+                let swiper = undefined;
+
+                // 슬라이드 초기화
+                if (swiper != undefined) {
+                    swiper = undefined;
+                }
+
+                // 슬라이드 인덱스 클래스 추가
+                let classNum = $(this).index() + 1;
+                $this.find(".swiper").addClass("slider" + classNum);
+
+                // 슬라이드 옵션
+                swiper = new Swiper(".main3 .drag_slide .slider" + classNum, {
+                    autoplay: false,
+                    slidesPerView: "auto",
+                    loop: false,
+                    spaceBetween: 20,
+                    freeMode: true,
+                    grabCursor: true,
+                    breakpoints: {
+                        800: {
+                            spaceBetween: 10,
+                        }
+                    },
+                    a11y: {
+                        paginationBulletMessage: '{{index}}번째 슬라이드로 이동',
+                    },
+                });
+            });
+            // 끝 main3 drag_slide
+
+            // 시작 main5 notice_slide
+            $(".main5 .notice_slide").each(function (index) {
+                let $this = $(this);
+                let swiper = undefined;
+
+                // 슬라이드 초기화
+                if (swiper != undefined) {
+                    swiper = undefined;
+                }
+
+                // 슬라이드 인덱스 클래스 추가
+                let classNum = $(this).index() + 1;
+                $this.find(".swiper").addClass("slider" + classNum);
+
+                // 슬라이드 옵션
+                swiper = new Swiper(".main5 .notice_slide .slider" + classNum, {
+                    autoplay: false,
+                    slidesPerView: 3,
+                    loop: false,
+                    spaceBetween: 35,
+                    touchRatio: 0,
+                    breakpoints: {
+                        800: {
+                            spaceBetween: 10,
+                            touchRatio: 1,
+                            slidesPerView: 2.5,
+                            freeMode: true,
+                        },
+                    },
+                    a11y: {
+                        paginationBulletMessage: '{{index}}번째 슬라이드로 이동',
+                    },
+                });
+            });
+            // 끝 main5 .notice_slide
+        });
+    </script>
+    <!-- 시작 스킵링크 -->
+    <div id="skipnavi">
+        <a href="#cont">본문으로 이동</a>
+        <a href="#gnb">주메뉴로 이동</a>
+        <a href="#footer">하단으로 이동</a>
+    </div>
+    <!-- 끝 스킵링크 -->
+
+    <!-- 시작 header -->
+    <header class="header" id="header">
+    </header>
+    <!-- 끝 header -->
+    <!-- 시작 content -->
+    <div id="cont" class="cont">
+        <!-- 시작 main1 -->
+        <div class="main1">
+            <div class="inner">
+                <div class="slogan">
+                    <div class="desc">
+                        <em class="txt">버튼·새로운·함께하는</em>
+                        <p class="tit">TOUCH Your Heart, BNK</p>
+                    </div>
+                    <a href="./coGrounpMngItea.html" class="link">
+                        <img src="../images/ic_next.svg" alt="이념과 비전 페이지로 이동">
+                    </a>
+                </div>
+                <div class="top_slide">
+                    <div class="swiper" role="region">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="video">
+                                    <video muted="" autoplay="" loop="" playsinline=""
+                                        poster="./images/main/main_visual1_poster.jpg">
+                                        <source src="./images/main/main_visual1.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="desc white">
+                                    <span class="tit">
+                                        디지털금융 IT전문 <br class="w800v">서비스 기업
+                                    </span>
+                                    <span class="txt">
+                                        지속가능 IT서비스 전문기업으로 도약
+                                    </span>
+                                    <a href="#" title="" class="btn white_bg">
+                                        <em class="w800n">상세내용 보러가기</em>
+                                        <img src="../images/ic_next.svg" alt="" class="w800v">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="photo">
+                                    <img src="./images/main/main_visual3.jpg" alt="" class="w800n">
+                                    <img src="./images/main/bg_.png" alt="" class="w800v m_bg1">
+                                    <img src="./images/main/main_visual3_mo.png" alt="" class="w800v m_bg2">
+                                </div>
+                                <div class="desc">
+                                    <span class="tit">
+                                        we're going to <br class="w800v">
+                                        digital ocean
+                                    </span>
+                                    <span class="txt">
+                                        지속가능 IT 가능서비스 전문기업으로 도약
+                                    </span>
+                                    <a href="#" title="" class="btn white_bg">
+                                        <em class="w800n">상세내용 보러가기</em>
+                                        <img src="../images/ic_next.svg" alt="" class="w800v">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control_btn">
+                            <!-- 시작 페이징 처리 -->
+                            <div class="swiper-pagination paging"></div>
+                            <!-- 끝 페이징 처리 -->
+                            <!-- 시작 재생/멈춤 -->
+                            <div class="play_pause">
+                                <button class="play" title="슬라이드 재생">
+                                    <img src="./images/main/swiper_play.svg" alt="">
+                                </button>
+                                <button class="pause" title="슬라이드 중지">
+                                    <img src="./images/main/swiper_pause.svg" alt="">
+                                </button>
+                            </div>
+                            <!-- 끝 재생/멈춤 -->
+                            <!-- 시작 슬라이드 화살표 -->
+                            <button type="button" title="이전 슬라이드로 이동" class="swiper-button-prev prev w800n">
+                                <img src="./images/main/swiper_prev.svg" alt="">
+                            </button>
+                            <button type="button" title="다음 슬라이드로 이동" class="swiper-button-next next w800n">
+                                <img src="./images/main/swiper_next.svg" alt="">
+                            </button>
+                            <!-- 끝 슬라이드 화살표 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 끝 main1 -->
+        <!-- 시작 main2 -->
+        <div class="main2">
+            <div class="inner">
+                <span class="main_tit" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500">
+                    All about
+                </span>
+                <div class="cont">
+                    <div class="desc">
+                        <p class="tit" data-aos="fade-up" data-aos-delay="150" data-aos-duration="500">
+                            IT기술과
+                            <img src="./images/main/sect01_ani.gif" alt=""> <br class="w800v">
+                            사람을 연결합니다.
+                        </p>
+                        <p class="main_txt" data-aos="fade-up" data-aos-delay="300" data-aos-duration="500">
+                            기술과 사람을 연결하는 힘은 눈에 보이지 않지만 <br class="w800v"> 그 무엇보다도 강력하고 <br class="w800n">
+                            지속가능한 미래를 만들어 갑니다.
+                        </p>
+                    </div>
+                    <div class="motion_txt" data-aos="fade-left" data-aos-delay="350" data-aos-duration="1000">
+                        <div class="group1">
+                            <span class="txt1">WE'RE</span>
+                            <span class="txt2 black">BANK SYSTEM</span>
+                        </div>
+                        <div class="group2">
+                            <span class="txt3">GOING</span>
+                            <span class="txt4">TO</span>
+                            <span class="txt5 sky">DIGITAL</span>
+                        </div>
+                        <div class="group3">
+                            <span class="txt6 blue">OCEAN</span>
+                            <span class="txt7 blue"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 끝 main2 -->
+        <!-- 시작 main3 -->
+        <div class="main3">
+            <div class="inner">
+                <span class="main_tit" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500">
+                    Business
+                </span>
+                <p class="main_txt" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500">
+                    고객의 비즈니스 환경에서 최적화된 최고의 <br class="w800v">
+                    금융IT 서비스를 선도합니다.
+                </p>
+                <div class="drag_slide" data-aos="fade-up" data-aos-delay="150" data-aos-duration="500">
+                    <div class="swiper" role="region">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide red">
+                                <a href="#" class="link">
+                                    <div class="desc">
+                                        <span class="txt">
+                                            전문성 기반의 안정화된
+                                        </span>
+                                        <span class="tit">
+                                            IT 서비스 운영
+                                        </span>
+                                    </div>
+                                    <div class="icon">
+                                        <img src="./images/main/sect02_icon01.svg" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide blue">
+                                <a href="#" class="link">
+                                    <div class="desc">
+                                        <span class="txt">
+                                            고객 니즈에 최적화된
+                                        </span>
+                                        <span class="tit">
+                                            IT 서비스 개발
+                                        </span>
+                                    </div>
+                                    <div class="icon">
+                                        <img src="./images/main/sect02_icon02.svg" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide purple">
+                                <a href="#" class="link">
+                                    <div class="desc">
+                                        <span class="txt">
+                                            풍부한 경험이 바탕된
+                                        </span>
+                                        <span class="tit">
+                                            솔루션 개발
+                                        </span>
+                                    </div>
+                                    <div class="icon">
+                                        <img src="./images/main/sect02_icon03.svg" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide green">
+                                <a href="#" class="link">
+                                    <div class="desc">
+                                        <span class="txt">
+                                            그룹시너지 창출을 위한
+                                        </span>
+                                        <span class="tit">
+                                            통합구매시스템
+                                        </span>
+                                    </div>
+                                    <div class="icon">
+                                        <img src="./images/main/sect02_icon04.svg" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide sky">
+                                <a href="#" class="link">
+                                    <div class="desc">
+                                        <span class="txt">
+                                            금융보안을 만족하는
+                                        </span>
+                                        <span class="tit">
+                                            정보보안 컨설팅
+                                        </span>
+                                    </div>
+                                    <div class="icon">
+                                        <img src="./images/main/sect02_icon05.svg" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="drag_swipe">
+                        <img src="../images/swipe_01.png" alt="슬라이드 제스처" class="swipe_img1">
+                        <img src="../images/swipe_02.png" alt="슬라이드 제스처" class="swipe_img2">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 끝 main3 -->
+        <!-- 시작 main4 -->
+        <div class="main4">
+            <div class="inner">
+                <div class="cont">
+                    <div class="left">
+                        <span class="main_tit" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500">
+                            Solution
+                        </span>
+                        <div class="desc">
+                            <p class="main_txt" data-aos="fade-up" data-aos-delay="150" data-aos-duration="500">
+                                다양한 IT 기술력을 바탕으로 <br>
+                                최적의 솔루션을 <br class="w800n">
+                                제공합니다.
+                            </p>
+                            <a href="#" title="" class="btn black_bg" data-aos="fade-up" data-aos-delay="300"
+                                data-aos-duration="500">
+                                서비스 더보기
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card_div">
+                        <ul class="card_wrap">
+                            <li>
+                                <div class="card_item card1">
+                                    <a href="#">
+                                        <div class="video hover">
+                                            <video muted="" autoplay="" loop="" playsinline=""
+                                                poster="./images/main/sect03_video01_poster.jpg">
+                                                <source src="./images/main/sect03_video01.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                        <div class="desc">
+                                            <div class="txt_top">
+                                                <span class="txt">
+                                                    서로가 함께라서 힘이 되는
+                                                </span>
+                                                <span class="tit">
+                                                    우리사주관리<br>시스템
+                                                </span>
+                                            </div>
+                                            <div class="txt_bot">
+                                                <p class="tit">BNK System</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="card_item card2">
+                                    <a href="#">
+                                        <div class="video hover">
+                                            <video muted="" autoplay="" loop="" playsinline=""
+                                                poster="./images/main/sect03_video02_poster.jpg">
+                                                <source src="./images/main/sect03_video03.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                        <div class="desc">
+                                            <div class="txt_top">
+                                                <span class="txt">
+                                                    맞춤형 통합 All-in-one
+                                                </span>
+                                                <span class="tit">
+                                                    프레임워크
+                                                </span>
+                                            </div>
+                                            <div class="txt_bot">
+                                                <p class="tit">B.Frame</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="card_item card3">
+                                    <a href="#">
+                                        <div class="video hover">
+                                            <video muted="" autoplay="" loop="" playsinline=""
+                                                poster="./images/main/sect03_video05_poster.jpg">
+                                                <source src="./images/main/sect03_video05.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+
+                                        <div class="desc">
+                                            <div class="txt_top">
+                                                <span class="txt">
+                                                    찾아가는 금융서비스를 위한
+                                                </span>
+                                                <span class="tit">
+                                                    태블릿브랜치
+                                                </span>
+                                            </div>
+                                            <div class="txt_bot">
+                                                <p class="tit">TABS</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="card_item card4">
+                                    <a href="#">
+                                        <div class="video hover">
+                                            <video muted="" autoplay="" loop="" playsinline=""
+                                                poster="./images/main/sect03_video03_poster.jpg">
+                                                <source src="./images/main/sect03_video02.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                        <div class="desc">
+                                            <div class="txt_top">
+                                                <span class="txt">
+                                                    지점방문 없이 온라인으로
+                                                </span>
+                                                <span class="tit">
+                                                    기업자금 관리 <br>
+                                                    솔루션
+                                                </span>
+                                            </div>
+                                            <div class="txt_bot">
+                                                <p class="tit">BIC(BNK-in-Bank CMS)</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="card_item card5">
+                                    <a href="#">
+                                        <div class="video hover">
+                                            <video muted="" autoplay="" loop="" playsinline=""
+                                                poster="./images/main/sect03_video04_poster.jpg">
+                                                <source src="./images/main/sect03_video04.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                        <div class="desc">
+                                            <div class="txt_top">
+                                                <span class="txt">
+                                                    다양한 문제해결을 위한
+                                                </span>
+                                                <span class="tit">
+                                                    통합경영관리 <br>
+                                                    시스템
+                                                </span>
+                                            </div>
+                                            <div class="txt_bot">
+                                                <p class="tit">ONE BIZ</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 끝 main4 -->
+        <!-- 시작 main5 -->
+        <div class="main5">
+            <div class="inner top">
+                <span class="main_tit" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500">
+                    News
+                </span>
+                <span class="main_txt" data-aos="fade-up" data-aos-delay="50" data-aos-duration="500">
+                    BNK시스템의 사람과 기술동향 등 새로운 이야기를 만나 보세요.
+                </span>
+                <!-- TODO 개발필요 - 공지사항 메뉴 개발 완료 후, 게시글(이미지, 제목, 날짜) 노출 작업 -->
+                <div class="notice_slide" data-aos="fade-up" data-aos-delay="150" data-aos-duration="500">
+                    <div class="swiper" role="region">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <div class="photo">
+                                        <img src="./images/main/notice_photo_01.jpg" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <span class="tit">
+                                            BNK시스템, 그린다에이아이와 AI 기술 제휴 업무 협약 체결
+                                        </span>
+                                        <span class="date">
+                                            2024-11-11
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <div class="photo">
+                                        <img src="./images/main/notice_photo_02.jpg" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <span class="tit">
+                                            BNK시스템, '스파로스아카데미' <br> 그룹 IT센터 투어 실시
+                                        </span>
+                                        <span class="date">
+                                            2024-07-10
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <div class="photo">
+                                        <img src="./images/main/notice_photo_03.png" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <span class="tit">
+                                            BNK시스템, 스틸리언과 정보보호 <br> 전문기업 MOU 체결
+                                        </span>
+                                        <span class="date">
+                                            2024-05-24
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inner bottom">
+                <a href="#" class="btn bd" data-aos="fade-up" data-aos-delay="250" data-aos-duration="500">새로운 소식
+                    더보기</a>
+                <div class="link_wrap" data-aos="fade-up" data-aos-delay="150" data-aos-duration="500">
+                    <a href="#" class="link">
+                        <div>
+                            <span class="tit">Company Culture</span>
+                            <span class="txt">
+                                서로 배려하는 유연한 기업문화를 함께 <br>
+                                만들어갑니다.
+                            </span>
+                        </div>
+                        <img src="./images/main/sect04_arrow.svg" alt="" class="icon">
+                    </a>
+                    <a href="#" class="link">
+                        <div>
+                            <span class="tit">Welfare Program</span>
+                            <span class="txt">
+                                더 나은 삶을 위해 다양한 복리후생을 지원합니다.
+                            </span>
+                        </div>
+                        <img src="./images/main/sect04_arrow.svg" alt="" class="icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- 끝 main5 -->
+        <!-- 시작 main6 -->
+        <div class="main6">
+            <div class="inner">
+                <div class="cont_wrap">
+                    <div class="photo">
+                        <img src="./images/main/sect05_bg.png" alt="">
+                    </div>
+                    <div class="desc">
+                        <span class="main_tit" data-aos="fade-up" data-aos-delay="50"
+                            data-aos-duration="500">Careers</span>
+                        <span class="main_txt" data-aos="fade-up" data-aos-delay="150" data-aos-duration="500">회사와 함께
+                            <br> 성장할 인재를 모집합니다.</span>
+                        <a href="#" class="btn black_bg" data-aos="fade-up" data-aos-delay="300"
+                            data-aos-duration="500">채용사이트 바로가기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 끝 main6 -->
+        <!-- 시작 footer -->
+        <footer id="footer" class="footer">
+        </footer>
+        <!-- Rmx footer -->
+        <div class="top_btn" onclick="topBtn();">
+            <button type="button">
+                <img src="../images/dropdown.svg" alt="">
+                <span>TOP</span>
+            </button>
+        </div>
+    </div>
+    <!-- 끝 content -->
+
+
+</body>
+
+</html>

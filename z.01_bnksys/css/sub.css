@@ -1,0 +1,8 @@
+.sub_wrap > .inner {margin: 60px auto 120px auto; padding: 0 60px;}
+
+.layer_box {padding: 35px;  word-break: keep-all;}
+.layer_box.ver1 {background-color: #f8f8f8; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 15px;}
+.layer_box.ver1 .txt {font-size: 1.7em;}
+/* 시작 cointro */
+.co_intro .cont1 .logo {max-width: 260px; margin: 0 auto;}
+/* 끝 cointro */
