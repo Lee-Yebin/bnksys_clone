@@ -3,9 +3,8 @@ $(function () {
     $(window).on("scroll", function () {
         topBtnScroll(".top_btn"); // top Btn 스크롤시 보이게
     });
-
-
 });
+
 // 슬라이드, 터치시 img 사라지게
 function swiperMotion(sliderTouch, motionImage) {
     $(document).on("touchstart mousedown", sliderTouch, function () {
@@ -37,16 +36,19 @@ function hamMenu(e) {
 function hamMenuFocusLeave() {
     $(".ham_menu_wrap .menu_btn").focus();
 }
+
 // footer familysite 
 function familySite(e) {
     $(e).siblings(".family_layer").slideToggle();
     $(e).parents().toggleClass("active");
 }
+
 // 웹접근성 - footer familysite 닫히게
 function familySiteLeave() {
     $(".footer .top .familysite.active .family_layer").slideUp();
     $(".footer .top .familysite.active").removeClass("active");
 }
+
 // top Btn 스크롤시 보이게
 function topBtnScroll(e) {
     let lastScrollTop = 0;
@@ -68,6 +70,7 @@ function topBtnScroll(e) {
 
     lastScrollTop = currentScroll;
 }
+
 // top Btn 클릭시 상단으로
 function topBtn() {
     $('html, body').animate({
