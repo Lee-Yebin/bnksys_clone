@@ -5,7 +5,6 @@
 /* RESET */
 html {font-family: 'Pretendard';-webkit-text-size-adjust: none;font-size: var(--tm-html);letter-spacing: -0.7px;-webkit-overflow-scrolling: touch;font-weight: 500;line-height: 1.5;word-break: break-all;word-wrap: break-word;color: var(--color-black);}
 /* 해당페이지폰트로 설정 */
-html {}
 html body {min-width: 320px;overflow-x: hidden;width: 100%;}
 
 html, body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, form, fieldset, input, select, label, textarea, table, caption, thead, tfoot, tbody, tr, th, td { margin: 0; padding: 0; -webkit-text-size-adjust: none; }
@@ -67,9 +66,6 @@ a img,button img{display: block;}
 a,button,select,textarea{line-height: inherit;}
 
 /* 스크롤 숨길때 */
-/* select { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
-select::-ms-expand { display: none; } */
-
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: #888888; }
 input::-moz-placeholder, textarea::-moz-placeholder { color: #888888; }
 input:-ms-input-placeholder, textarea:-ms-input-placeholder { color: #888888; }
@@ -82,15 +78,3 @@ caption { overflow: hidden; width: 0; height: 0; text-indent: -9999em; }
 
 /* 접근성 관계없이 숨길때 */
 .blind { visibility: hidden;border: 0;position: absolute;width: 1px;height: 1px;clip: rect(1px, 1px, 1px, 1px);clip-path: inset(50%); }
-
-/* 스크롤 커스텀 */
-/* *::-webkit-scrollbar {width: 10px;}
-*::-webkit-scrollbar-thumb {background: rgba(9, 9,9, 0.2); border-radius: 10px; }
-*::-webkit-scrollbar-track {background: rgba(255, 255, 255, 1);} */
-
-@media (max-width: 1024px) { html {/* font-size: 15px; */} }
-/* @media (max-width: 770px) { html { font-size: 13px; } } */
-@media (max-width: 450px) { html { font-size: 14px; } }
-/* @media (max-width: 375px) { html { font-size: 10px; } } */
-/* @media (max-width: 321px) { html { font-size: 9px; } } */
-/* 해당페이지반응형px로설정 이대로 설정해도 무관 */

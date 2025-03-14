@@ -19,6 +19,8 @@
 .btn {font-size: 1em;border-radius: 90px;font-weight: 700;padding: 0 30px;display: flex;align-items: center;justify-content: center;min-height: 56px;}
 .btn.white_bg {background-color: #fff; color: var(--color-black); border: none;}
 .btn.black_bg {background-color: var(--color-black); color: #fff; border: none;}
+.btn:focus-visible {outline-offset: -5px; outline-width: 4px}
+.btn.black_bg:focus-visible { outline-color:yellow}
 .btn.bd {border: 1px solid #d0d3d8; background-color: #fff;}
 /* 끝 프로젝트 기본 세팅 */
 
