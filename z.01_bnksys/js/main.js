@@ -8,13 +8,15 @@ $(function () {
         cardScroll(".main4 .card_wrap .card3");
         cardScroll(".main4 .card_wrap .card4");
         cardScroll(".main4 .card_wrap .card5");
+        main6Img(".main5", ".main6 .photo img");
     });
 });
 
 // main4 card_wrap 스크롤시 상단 고정
+
 function cardScroll(cardClass) {
-    let scrollY = $(window).scrollTop();
     // 고정할 섹션
+    let scrollY = $(window).scrollTop();
     let fixedPointCont = $(cardClass);
     let fixedPoint = fixedPointCont.offset().top;
 
@@ -29,5 +31,18 @@ function cardScroll(cardClass) {
         fixedPointCont.addClass("active");
     } else {
         fixedPointCont.removeClass("active");
+    }
+}
+
+// (성능)main6 - 이미지 스크롤시 보이게
+function main6Img(scrollClass, imgClass) {
+    let scrollY = $(window).scrollTop();
+    let scrollCont = $(scrollClass).offset().top;
+    let imgCont = $(imgClass);
+
+    if(scrollY > scrollCont) {
+        imgCont.show();
+    } else {
+        imgCont.hide();
     }
 }
