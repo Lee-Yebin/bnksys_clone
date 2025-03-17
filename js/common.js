@@ -3,6 +3,7 @@ $(function () {
     $(window).on("scroll", function () {
         topBtnScroll(".top_btn"); // top Btn 스크롤시 보이게
     });
+    swiperMotion(".drag_slide", ".drag_swipe img");
 });
 
 // 슬라이드, 터치시 img 사라지게
@@ -15,26 +16,24 @@ function swiperMotion(sliderTouch, motionImage) {
     });
 }
 
-swiperMotion(".drag_slide", ".drag_swipe img");
-
 // header menu hover
-function headerMenuHover(el, show) {
+function headerMenuHover(isVisible) {
     const depth2 = $(".header .gnb .depth2");
     const headerBg = $(".header .header_bg");
+    let showHideState = isVisible ? "block" : "none";
 
-    depth2.css("display", show ? "block" : "none");
-    headerBg.css("display", show ? "block" : "none");
-
-}
-
-//header hamMenu
-function hamMenu(e) {
-    $(e).parents().toggleClass("active");
+    depth2.css("display", showHideState);
+    headerBg.css("display", showHideState);
 }
 
 // 웹접근성 - header hamMenu Close focus
 function hamMenuFocusLeave() {
     $(".ham_menu_wrap .menu_btn").focus();
+}
+
+//header hamMenu
+function hamMenu(e) {
+    $(e).parents().toggleClass("active");
 }
 
 // footer familysite 
